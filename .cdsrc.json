@@ -1,0 +1,18 @@
+{
+    "[development]": {
+      "auth": {
+        "passport": {
+          "users": {
+            "viewer@nagarro.com": {
+              "password": "initial",
+              "ID": "viewer@nagarro.com",
+              "roles": [
+                "Viewer"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+  

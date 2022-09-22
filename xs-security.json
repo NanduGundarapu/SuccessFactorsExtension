@@ -1,0 +1,21 @@
+{
+    "xsappname": "succfact",
+    "tenant-mode": "dedicated",
+    "scopes": [
+      {
+        "name": "$XSAPPNAME.Read",
+        "description": "Viewer"
+      }
+    ],
+    "attributes": [],
+    "role-templates": [
+      {
+        "name": "Viewer",
+        "description": "generated",
+        "scope-references": [
+          "$XSAPPNAME.Read"
+        ],
+        "attribute-references": []
+      }
+    ]
+  }

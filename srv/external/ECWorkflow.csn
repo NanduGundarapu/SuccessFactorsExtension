@@ -1,0 +1,2430 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.1.4"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ECWorkflow": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true"
+    },
+    "ECWorkflow.WfRequestActionResponse": {
+      "kind": "type",
+      "elements": {
+        "status": {
+          "type": "cds.LargeString",
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "status"
+        },
+        "wfRequestId": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "wfRequestId"
+        }
+      }
+    },
+    "ECWorkflow.approveWfRequest": {
+      "kind": "action",
+      "params": {
+        "wfRequestId": {
+          "type": "cds.Integer64"
+        },
+        "comment": {
+          "type": "cds.LargeString"
+        }
+      },
+      "returns": {
+        "items": {
+          "type": "ECWorkflow.WfRequestActionResponse"
+        }
+      }
+    },
+    "ECWorkflow.commentWfRequest": {
+      "kind": "action",
+      "params": {
+        "wfRequestId": {
+          "type": "cds.Integer64"
+        },
+        "comment": {
+          "type": "cds.LargeString"
+        }
+      },
+      "returns": {
+        "items": {
+          "type": "ECWorkflow.WfRequestActionResponse"
+        }
+      }
+    },
+    "ECWorkflow.rejectWfRequest": {
+      "kind": "action",
+      "params": {
+        "wfRequestId": {
+          "type": "cds.Integer64"
+        },
+        "comment": {
+          "type": "cds.LargeString"
+        }
+      },
+      "returns": {
+        "items": {
+          "type": "ECWorkflow.WfRequestActionResponse"
+        }
+      }
+    },
+    "ECWorkflow.sendbackWfRequest": {
+      "kind": "action",
+      "params": {
+        "wfRequestId": {
+          "type": "cds.Integer64"
+        },
+        "comment": {
+          "type": "cds.LargeString"
+        }
+      },
+      "returns": {
+        "items": {
+          "type": "ECWorkflow.WfRequestActionResponse"
+        }
+      }
+    },
+    "ECWorkflow.getWorkflowPendingData": {
+      "kind": "action",
+      "params": {
+        "wfRequestId": {
+          "type": "cds.Integer64"
+        }
+      }
+    },
+    "ECWorkflow.withdrawWfRequest": {
+      "kind": "action",
+      "params": {
+        "wfRequestId": {
+          "type": "cds.Integer64"
+        },
+        "comment": {
+          "type": "cds.LargeString"
+        }
+      },
+      "returns": {
+        "items": {
+          "type": "ECWorkflow.WfRequestActionResponse"
+        }
+      }
+    },
+    "ECWorkflow.MyPendingWorkflow": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.label": "MyPendingWorkflow",
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.upsertable": "false",
+      "@sap.deletable": "false",
+      "elements": {
+        "wfRequestId": {
+          "key": true,
+          "type": "cds.LargeString",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "WF Request ID"
+        },
+        "desc": {
+          "type": "cds.LargeString",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Description"
+        },
+        "subject": {
+          "type": "cds.LargeString",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Subject"
+        },
+        "url": {
+          "type": "cds.LargeString",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "URL"
+        }
+      }
+    },
+    "ECWorkflow.WfRequestParticipator": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.label": "WfRequestParticipator",
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.upsertable": "false",
+      "@sap.deletable": "false",
+      "elements": {
+        "wfRequestParticipatorId": {
+          "key": true,
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Workflow Request Participator Id"
+        },
+        "actorType": {
+          "type": "cds.String",
+          "length": 32,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Actor Type"
+        },
+        "createdBy": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Created By"
+        },
+        "createdDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Created Date Time"
+        },
+        "createdOn": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "Created On"
+        },
+        "lastModifiedBy": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Last Modified By"
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Last Modified Date Time"
+        },
+        "lastModifiedOn": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "Last Modified On"
+        },
+        "ownerId": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Owner Id"
+        },
+        "participatorType": {
+          "type": "cds.String",
+          "length": 32,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Participator Type"
+        },
+        "processingOrder": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Processing Order"
+        },
+        "relatedTo": {
+          "type": "cds.String",
+          "length": 32,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Related To"
+        },
+        "roleId": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Role Id"
+        },
+        "wfRequestId": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Workflow Request Id"
+        }
+      }
+    },
+    "ECWorkflow.WorkflowAllowedActionList": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.label": "WorkflowAllowedActionList",
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.upsertable": "false",
+      "@sap.deletable": "false",
+      "elements": {
+        "wfRequestId": {
+          "key": true,
+          "type": "cds.Integer64",
+          "@sap.required": "true",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Workflow Request Id"
+        },
+        "allowApprove": {
+          "type": "cds.Boolean",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Allow Approve"
+        },
+        "allowDelegateDecline": {
+          "type": "cds.Boolean",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Allow Delegate Decline"
+        },
+        "allowDelegateGrant": {
+          "type": "cds.Boolean",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Allow Delegate Grant"
+        },
+        "allowDelegateRevoke": {
+          "type": "cds.Boolean",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Allow Delegate Revoke"
+        },
+        "allowPostComment": {
+          "type": "cds.Boolean",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Allow Post Comment"
+        },
+        "allowReject": {
+          "type": "cds.Boolean",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Allow Reject"
+        },
+        "allowResubmit": {
+          "type": "cds.Boolean",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Allow Resubmit"
+        },
+        "allowSendback": {
+          "type": "cds.Boolean",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Allow Sendback"
+        },
+        "allowUpdateRequest": {
+          "type": "cds.Boolean",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Allow Update Request"
+        },
+        "allowWithdraw": {
+          "type": "cds.Boolean",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Allow Withdraw"
+        }
+      }
+    },
+    "ECWorkflow.AlertMessage": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.label": "AlertMessage",
+      "@sap.creatable": "true",
+      "@sap.updatable": "true",
+      "@sap.upsertable": "true",
+      "@sap.deletable": "true",
+      "elements": {
+        "externalCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 128,
+          "@sap.required": "true",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "externalCode"
+        },
+        "alertDescription": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescription"
+        },
+        "alertDescriptionLocalized_de_DE": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertDescriptionLocalized_defaultValue": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertDescriptionLocalized_en_GB": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertDescriptionLocalized_en_US": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertDescriptionLocalized_es_ES": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertDescriptionLocalized_fr_FR": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertDescriptionLocalized_ja_JP": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertDescriptionLocalized_ko_KR": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertDescriptionLocalized_localized": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertDescriptionLocalized_nl_NL": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertDescriptionLocalized_pt_BR": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertDescriptionLocalized_pt_PT": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertDescriptionLocalized_ru_RU": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertDescriptionLocalized_zh_CN": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertDescriptionLocalized_zh_TW": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertDescriptionLocalized"
+        },
+        "alertHeader": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeader"
+        },
+        "alertHeaderLocalized_de_DE": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "alertHeaderLocalized_defaultValue": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "alertHeaderLocalized_en_GB": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "alertHeaderLocalized_en_US": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "alertHeaderLocalized_es_ES": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "alertHeaderLocalized_fr_FR": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "alertHeaderLocalized_ja_JP": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "alertHeaderLocalized_ko_KR": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "alertHeaderLocalized_localized": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "alertHeaderLocalized_nl_NL": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "alertHeaderLocalized_pt_BR": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "alertHeaderLocalized_pt_PT": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "alertHeaderLocalized_ru_RU": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "alertHeaderLocalized_zh_CN": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "alertHeaderLocalized_zh_TW": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alertHeaderLocalized"
+        },
+        "createdBy": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemCreatedBy"
+        },
+        "createdDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemCreatedDate"
+        },
+        "effectiveStatus": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "true",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "effectiveStatus"
+        },
+        "externalName": {
+          "type": "cds.String",
+          "length": 128,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "externalName"
+        },
+        "lastModifiedBy": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemLastModifiedBy"
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemLastModifiedDate"
+        },
+        "mdfSystemCreatedBy": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemCreatedBy"
+        },
+        "mdfSystemCreatedDate": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "mdfSystemCreatedDate"
+        },
+        "mdfSystemEffectiveEndDate": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "mdfSystemEffectiveEndDate"
+        },
+        "mdfSystemEffectiveStartDate": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "mdfSystemEffectiveStartDate"
+        },
+        "mdfSystemEntityId": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemEntityId"
+        },
+        "mdfSystemLastModifiedBy": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemLastModifiedBy"
+        },
+        "mdfSystemLastModifiedDate": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "mdfSystemLastModifiedDate"
+        },
+        "mdfSystemLastModifiedDateWithTZ": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemLastModifiedDate"
+        },
+        "mdfSystemObjectType": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemObjectType"
+        },
+        "mdfSystemRecordId": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemRecordId"
+        },
+        "mdfSystemRecordStatus": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemRecordStatus"
+        },
+        "mdfSystemTransactionSequence": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemTransactionSequence"
+        },
+        "mdfSystemVersionId": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemVersionId"
+        },
+        "wfRequestNav": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "wfRequestNav",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "ECWorkflow.WfRequest",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        }
+      }
+    },
+    "ECWorkflow.WfRequestComments": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.label": "WfRequestComments",
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.upsertable": "false",
+      "@sap.deletable": "false",
+      "elements": {
+        "wfRequestCommentId": {
+          "key": true,
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Workflow Request Comment Id"
+        },
+        "actionType": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Action Type"
+        },
+        "comments": {
+          "type": "cds.String",
+          "length": 4000,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Comments"
+        },
+        "createdBy": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Created By"
+        },
+        "createdDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Created Date Time"
+        },
+        "createdOn": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "Created On"
+        },
+        "lastModifiedBy": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Last Modified By"
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Last Modified Date Time"
+        },
+        "lastModifiedOn": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "Last Modified On"
+        },
+        "userId": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "User Id"
+        },
+        "wfRequestId": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Workflow Request Id"
+        },
+        "wfRequestStepId": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Workflow Request Step Id"
+        }
+      }
+    },
+    "ECWorkflow.WfRequestStep": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.label": "WfRequestStep",
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.upsertable": "false",
+      "@sap.deletable": "false",
+      "elements": {
+        "wfRequestStepId": {
+          "key": true,
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "WfRequestStep Id"
+        },
+        "actionType": {
+          "type": "cds.String",
+          "length": 32,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Action Type"
+        },
+        "approverType": {
+          "type": "cds.String",
+          "length": 32,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Approver Type"
+        },
+        "createdBy": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Created By"
+        },
+        "createdDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Created Date Time"
+        },
+        "createdOn": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "Created On"
+        },
+        "lastModifiedBy": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Last Modified By"
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Last Modified Date Time"
+        },
+        "lastModifiedOn": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "Last Modified On"
+        },
+        "ownerId": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Owner Id"
+        },
+        "processedBy": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Processed By"
+        },
+        "relatedTo": {
+          "type": "cds.String",
+          "length": 32,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Related To"
+        },
+        "role": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Role"
+        },
+        "status": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Status"
+        },
+        "stepNum": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Step Number"
+        },
+        "wfRequestId": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "WfRequest Id"
+        },
+        "wfRequestNav": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "wfRequestNav",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "ECWorkflow.WfRequest",
+          "keys": []
+        }
+      }
+    },
+    "ECWorkflow.AutoDelegateDetail": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.label": "Auto Delegate Detail",
+      "@sap.creatable": "true",
+      "@sap.updatable": "true",
+      "@sap.upsertable": "true",
+      "@sap.deletable": "true",
+      "elements": {
+        "AutoDelegateConfig_delegator": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "true",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Auto Delegate Config_delegator"
+        },
+        "externalCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 128,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "externalCode"
+        },
+        "alwaysOn": {
+          "type": "cds.Boolean",
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "alwaysOn"
+        },
+        "createdBy": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "createdBy"
+        },
+        "createdDate": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "createdDate"
+        },
+        "createdDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "createdDate"
+        },
+        "delegatee": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "delegatee"
+        },
+        "lastModifiedBy": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "lastModifiedBy"
+        },
+        "lastModifiedDate": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "lastModifiedDate"
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "lastModifiedDate"
+        },
+        "lastModifiedDateWithTZ": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "lastModifiedDate"
+        },
+        "mdfSystemEffectiveEndDate": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "mdfSystemEffectiveEndDate"
+        },
+        "mdfSystemEffectiveStartDate": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "mdfSystemEffectiveStartDate"
+        },
+        "mdfSystemEntityId": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemEntityId"
+        },
+        "mdfSystemObjectType": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemObjectType"
+        },
+        "mdfSystemRecordId": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemRecordId"
+        },
+        "mdfSystemRecordStatus": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemRecordStatus"
+        },
+        "mdfSystemStatus": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemStatus"
+        },
+        "mdfSystemTransactionSequence": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemTransactionSequence"
+        },
+        "mdfSystemVersionId": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemVersionId"
+        },
+        "status": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "status"
+        }
+      }
+    },
+    "ECWorkflow.AutoDelegateConfig": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.label": "Auto Delegate Config",
+      "@sap.creatable": "true",
+      "@sap.updatable": "true",
+      "@sap.upsertable": "true",
+      "@sap.deletable": "true",
+      "elements": {
+        "delegator": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "delegator"
+        },
+        "createdBy": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "createdBy"
+        },
+        "createdDate": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "createdDate"
+        },
+        "createdDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "createdDate"
+        },
+        "lastModifiedBy": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "lastModifiedBy"
+        },
+        "lastModifiedDate": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "lastModifiedDate"
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "lastModifiedDate"
+        },
+        "lastModifiedDateWithTZ": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "lastModifiedDate"
+        },
+        "mdfSystemEffectiveEndDate": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "mdfSystemEffectiveEndDate"
+        },
+        "mdfSystemEffectiveStartDate": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "mdfSystemEffectiveStartDate"
+        },
+        "mdfSystemEntityId": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemEntityId"
+        },
+        "mdfSystemObjectType": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemObjectType"
+        },
+        "mdfSystemRecordId": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemRecordId"
+        },
+        "mdfSystemRecordStatus": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemRecordStatus"
+        },
+        "mdfSystemStatus": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemStatus"
+        },
+        "mdfSystemTransactionSequence": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemTransactionSequence"
+        },
+        "mdfSystemVersionId": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mdfSystemVersionId"
+        },
+        "autoDelegateDetails": {
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.field.control": "AutoDelegateConfigFieldControlsNav/autoDelegateDetails",
+          "@sap.label": "Auto Delegate Details",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "ECWorkflow.AutoDelegateDetail",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "wfRequestNav": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "wfRequestNav",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "ECWorkflow.WfRequest",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        }
+      }
+    },
+    "ECWorkflow.EmpWfRequest": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.label": "EmpWfRequest",
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.upsertable": "false",
+      "@sap.deletable": "false",
+      "elements": {
+        "empWfRequestId": {
+          "key": true,
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "EmpWfRequest Id"
+        },
+        "actionType": {
+          "type": "cds.String",
+          "length": 128,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Action Type"
+        },
+        "effectiveDate": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "Effective Date"
+        },
+        "entityType": {
+          "type": "cds.String",
+          "length": 128,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Entity Type"
+        },
+        "eventReason": {
+          "type": "cds.String",
+          "length": 32,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Event Reason"
+        },
+        "requestType": {
+          "type": "cds.String",
+          "length": 128,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Request Type"
+        },
+        "subjectId": {
+          "type": "cds.String",
+          "length": 1024,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Subject Id"
+        },
+        "wfConfig": {
+          "type": "cds.String",
+          "length": 32,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "WfConfig"
+        },
+        "wfRequestId": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "WfRequest Id"
+        }
+      }
+    },
+    "ECWorkflow.WfRequest": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.label": "WfRequest",
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.upsertable": "false",
+      "@sap.deletable": "false",
+      "elements": {
+        "wfRequestId": {
+          "key": true,
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "WfRequest Id"
+        },
+        "createdBy": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Created By"
+        },
+        "createdDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Created Date Time"
+        },
+        "createdOn": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "Created On"
+        },
+        "currentStepNum": {
+          "type": "cds.Integer",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Current Step Number"
+        },
+        "lastModifiedBy": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Last Modified By"
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 0,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Last Modified Date Time"
+        },
+        "lastModifiedOn": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "Last Modified On"
+        },
+        "module": {
+          "type": "cds.String",
+          "length": 128,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Module"
+        },
+        "parentWfRequestId": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Parent WfRequest Id"
+        },
+        "reminderSentDate": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.display.format": "Date",
+          "@sap.label": "Reminder Sent Date"
+        },
+        "status": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "Status"
+        },
+        "totalSteps": {
+          "type": "cds.Integer",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "Total Steps"
+        },
+        "url": {
+          "type": "cds.LargeString",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "URL"
+        },
+        "empWfRequestNav": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "empWfRequestNav",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "ECWorkflow.EmpWfRequest",
+          "keys": []
+        },
+        "parentWfRequestNav": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "parentWfRequestNav",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "ECWorkflow.WfRequest",
+          "keys": []
+        },
+        "wfRequestCommentsNav": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "wfRequestCommentsNav",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "ECWorkflow.WfRequestComments",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "wfRequestParticipatorNav": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "wfRequestParticipatorNav",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "ECWorkflow.WfRequestParticipator",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "wfRequestStepNav": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "wfRequestStepNav",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "ECWorkflow.WfRequestStep",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "workflowAllowedActionListNav": {
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "workflowAllowedActionListNav",
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "ECWorkflow.WorkflowAllowedActionList",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        }
+      }
+    }
+  }
+}
